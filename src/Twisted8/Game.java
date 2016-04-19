@@ -2,7 +2,7 @@ package Twisted8;
 
 
 import Deck.Deck;
-
+import Deck.Card;
 import java.util.ArrayList;
 
 /**
@@ -13,11 +13,35 @@ public class Game {
     private ArrayList<Player> players;
     private Deck deck;
     private boolean gameIsStarted;
+    private ArrayList<Card> board;
 
-    public Game(){
+    public Game(int players){
         this.gameIsStarted = false;
         this.deck = new Deck();
-        this.players = new ArrayList<>();
+        this.players = getPlayers(players);
+        this.board = new ArrayList<>();
+
+        placeCard(deck.getTopOfDeck());
+        
+    }
+
+    public ArrayList<Player> getPlayers(int players){
+
+        ArrayList<Player> ppl = new ArrayList<>();
+        for(int i = 0; i < players; i++){
+            ppl.add(new Player("Player "+String.valueOf(i+1)));
+        }
+
+        return ppl;
+    }
+
+    public void placeCard(Card card){
+        // TODO: make isValid() func
+        board.add(0,card);
+    }
+
+    public Card getTopOfBoard(){
+        return board.get(0);
     }
 
     public void addPlayer(Player player){
@@ -34,18 +58,13 @@ public class Game {
         }
     }
 
+    public void run(){
+
+    }
+
     public static void main(String[] args) {
-        Game game = new Game();
-        Player eddern = new Player("Eddern");
-        Player eirik = new Player("Aase");
-        Player simen = new Player("SlimJim");
-        game.addPlayer(eddern);
-        game.addPlayer(eirik);
-        game.addPlayer(simen);
-        game.dealCards(5);
-        System.out.println(simen);
-        System.out.println(eddern);
-        System.out.println(eirik);
+        Game game = new Game(3);
+
     }
 
 

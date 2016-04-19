@@ -50,8 +50,18 @@ public class Deck {
         return deck;
     }
 
+    public int getSize(){
+        return deck.size();
+    }
+
     public ArrayList<Card> getDeck() {
         return deck;
+    }
+
+    public Card getTopOfDeck(){
+        Card card = deck.get(0);
+        deck.remove(0);
+        return card;
     }
 
     @Override
