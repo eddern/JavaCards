@@ -4,6 +4,7 @@ package Twisted8;
 import Deck.Deck;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Eirik Kaldahl on 19.04.2016.
@@ -27,12 +28,16 @@ public class Game {
         this.players.add(player);
     }
 
-    public void dealCards(int amount){
+    public void dealCards(int amount) {
         this.gameIsStarted = true;
-        for(int i = 0; i < players.size(); i++){
+        for (int i = 0; i < players.size(); i++) {
             players.get(i).addToHand(deck.draw(amount));
         }
     }
+    public void shufflePlayers(){
+        Collections.shuffle(this.players);
+    }
+
 
     public static void main(String[] args) {
         Game game = new Game();
@@ -42,10 +47,8 @@ public class Game {
         game.addPlayer(eddern);
         game.addPlayer(eirik);
         game.addPlayer(simen);
+        game.shufflePlayers();
         game.dealCards(5);
-        System.out.println(simen);
-        System.out.println(eddern);
-        System.out.println(eirik);
     }
 
 
