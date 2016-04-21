@@ -91,8 +91,11 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game(3);
+        this.players.add(currentPlayer);
+        currentPlayer = this.players.get(0);
+        game.players.remove(0);
         System.out.println(game.currentPlayer);
         Scanner scanner = new Scanner(System.in);
-
+        }
     }
 }
